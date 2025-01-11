@@ -28,10 +28,12 @@ public:
 	void stop();
 	void reset();
 	bool elapsed(const bool &_reset=true);
+	ulong getElapsedTime();
 
 
 private:
 	ulong timeBench = 0;
+	ulong lastElapsedTime = 0;
 	ulong period    = 0;
 	bool enabled    = false;
 	bool executeOne = false;

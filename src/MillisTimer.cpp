@@ -108,6 +108,7 @@ void MillisTimer::stop()
 		lastElapsedTime = getElapsedTime();
 	enabled = false;
 	executeOne = false;
+	elapsed = false;
 }
 
 
@@ -130,13 +131,14 @@ void MillisTimer::stop()
 */
 void MillisTimer::reset()
 {
+	elapsed = false;
 	timeBench += period;
 }
 
 
 
 /*
- bool MillisTimer::elapsed(const bool &_reset)
+ bool MillisTimer::fire(const bool &_reset)
 
  Description:
  ------------
@@ -152,7 +154,7 @@ void MillisTimer::reset()
  -------
   * bool - Whether or not enough time has elapsed
 */
-bool MillisTimer::elapsed(const bool &_reset)
+bool MillisTimer::fire(const bool &_reset)
 {
 	ulong currentTime;
 
@@ -173,6 +175,7 @@ bool MillisTimer::elapsed(const bool &_reset)
 		// Determine if enough time has passed
 		if (timeDiff >= period)
 		{
+			elapsed = true;
 			lastElapsedTime = period;
 			if (_reset)
 				reset();
@@ -205,6 +208,9 @@ ulong MillisTimer::getElapsedTime()
 
 	if(!enabled)
 		return lastElapsedTime;
+
+	if(elapsed)
+		return period;
 
 	if (us)
 		currentTime = micros();

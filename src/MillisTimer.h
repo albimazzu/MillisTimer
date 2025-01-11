@@ -27,7 +27,7 @@ public:
 	void start();
 	void stop();
 	void reset();
-	bool elapsed(const bool &_reset=true);
+	bool fire(const bool &_reset=false);
 	ulong getElapsedTime();
 
 
@@ -36,5 +36,6 @@ private:
 	ulong lastElapsedTime = 0;
 	ulong period    = 0;
 	bool enabled    = false;
+	bool elapsed   	= false;
 	bool executeOne = false;
 };

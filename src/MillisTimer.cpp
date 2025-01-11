@@ -37,7 +37,7 @@ void MillisTimer::begin(const ulong &timeout, const bool &micros)
 
  Inputs:
  -------
-  * const ulong &timeout - Number of ms/us to fire after
+  * const ulong &timeout - Number of ms/us to elapse the timer
   * const bool &reset - Allows user to reinitialize timer after updating timeout
 
  Return:
@@ -135,7 +135,7 @@ void MillisTimer::reset()
 
 
 /*
- bool MillisTimer::fire(const bool &_reset)
+ bool MillisTimer::elapsed(const bool &_reset)
 
  Description:
  ------------
@@ -151,7 +151,7 @@ void MillisTimer::reset()
  -------
   * bool - Whether or not enough time has elapsed
 */
-bool MillisTimer::fire(const bool &_reset)
+bool MillisTimer::elapsed(const bool &_reset)
 {
 	ulong currentTime;
 

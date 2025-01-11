@@ -27,7 +27,7 @@ public:
 	void start();
 	void stop();
 	void reset();
-	bool fire(const bool &_reset=true);
+	bool elapsed(const bool &_reset=true);
 
 
 private:
